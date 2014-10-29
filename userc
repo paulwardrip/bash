@@ -1,0 +1,17 @@
+#!/bin/bash
+#
+# This profile maps the bash library scripts to aliases and performs other setup.
+# techphoria.net
+
+export __scriptpath=`readlink -e "${BASH_SOURCE[0]}"`
+export __scriptdir=`dirname "${BASH_SOURCE[0]}"`
+
+alias rnx="$__scriptdir/sbin/regex-renamer.sh"
+
+function config {
+	vim $__scriptpath
+}
+
+function apply {
+	source $__scriptpath
+}
