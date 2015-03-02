@@ -3,8 +3,37 @@
 # This profile maps the bash library scripts to aliases and performs other setup.
 # techphoria.net
 
-export __scriptpath=`readlink -e "${BASH_SOURCE[0]}"`
+function ostype () {
+    case "$(uname -s)" in
+       Darwin)
+            if [ "$1" == "darwin" ]; then
+                return 0
+            fi
+            ;;
+       Linux)
+            if [ "$1" == "linux" ]; then
+                return 0
+            fi
+            ;;
+       CYGWIN*)
+            if [ "$1" == "cygwin" ]; then
+                return 0
+            fi
+            ;;
+    esac
+    return 1
+}
+
 export __scriptdir=`dirname "${BASH_SOURCE[0]}"`
+
+if ostype darwin; then
+    export __scriptpath=`$__scriptdir/mac/readlink.sh "${BASH_SOURCE[0]}"`
+    source $__scriptdir/mac/setjdk.sh
+
+else
+    export __scriptpath=`readlink -n "${BASH_SOURCE[0]}"`
+fi
+
 
 alias rnx="$__scriptdir/sbin/regex-renamer.sh"
 
