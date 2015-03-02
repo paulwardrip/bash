@@ -25,8 +25,10 @@ function ostype () {
 }
 
 export __scriptdir=`dirname "${BASH_SOURCE[0]}"`
+chmod +x $__scriptdir/sbin/*.sh
 
 if ostype darwin; then
+    chmod +x $__scriptdir/mac/*.sh
     export __scriptpath=`$__scriptdir/mac/readlink.sh "${BASH_SOURCE[0]}"`
     source $__scriptdir/mac/setjdk.sh
 
