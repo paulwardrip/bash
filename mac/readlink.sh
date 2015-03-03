@@ -1,4 +1,9 @@
 #!/bin/sh
+#
+# Recursive symlink following to get the real canonical path
+# (MacOS readlink lacks this functionality).
+#
+
 ! (($#)) && echo -e "ERROR: readlink <link to analyze>" 1>&2 && exit 99
 
 link="$1"

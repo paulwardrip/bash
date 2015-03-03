@@ -1,4 +1,7 @@
 #!/bin/bash
+#
+# Rename a set of files using regular expressions.
+#
 
 function __rnx_input {
 	__rnx_output=""

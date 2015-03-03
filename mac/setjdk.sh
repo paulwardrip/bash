@@ -1,3 +1,8 @@
+#!/bin/sh
+#
+# A script for removing the default JRE and adding the requested JDK to the PATH on MacOS
+#
+
 function setjdk() {
   if [ $# -ne 0 ]; then
    removeFromPath '/System/Library/Frameworks/JavaVM.framework/Home/bin'
